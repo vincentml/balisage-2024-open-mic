@@ -174,7 +174,7 @@ This script runs the Gradle task `test`.
 
 To see the progress and results of tests go to the [Actions](https://github.com/vincentml/balisage-2024-open-mic/actions) tab in the GitHub project.
 
-## Docker
+## How can I run BaseX using Docker?
 
 For this example you will need to have [Docker Desktop](https://www.docker.com/products/docker-desktop/) already installed and running.
 
