@@ -1,0 +1,23 @@
+# General Options
+
+# Client/Server Architecture
+
+# HTTP Services
+GZIP = true
+RESTXQERRORS = false
+AUTHMETHOD = Digest
+
+# Local Options
+DTD = true
+INTPARSE = false
+CATALOG = src/schemas/catalog.xml;/srv/basex/schemas/catalog.xml
+CREATEFILTER = *.xml
+TOKENINDEX = true
+FTINDEX = true
+ARCHIVENAME = false
+ADDRAW = true
+UPDINDEX = true
+AUTOOPTIMIZE = true
+SKIPCORRUPT = true
+ADDCACHE = true
+WITHDB = false

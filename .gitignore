@@ -3,3 +3,18 @@
 
 # Ignore Gradle build output directory
 build
+
+# Data Files
+/files/**
+
+# BaseX
+/.basex*
+!/.basexhome
+/data/**
+/repo/**
+/src/webapp/WEB-INF/*
+
+# XSpec
+xspec
+*-report.html
+*-result.html

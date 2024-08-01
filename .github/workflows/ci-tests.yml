@@ -1,0 +1,38 @@
+name: CI Tests
+
+on: [push]
+
+jobs:
+    ci-tests:
+        runs-on: ubuntu-latest
+        steps:
+
+        - name: Git checkout
+          uses: actions/checkout@v4
+
+        - name: Set up JDK 21
+          uses: actions/setup-java@v4
+          with:
+            java-version: '21'
+            distribution: 'corretto'
+
+        - name: Set up Gradle
+          uses: gradle/actions/setup-gradle@v3
+
+# if AWS SDK is needed for tests uncomment this part and configure secret keys in GitHub
+#        - name: Configure AWS credentials
+#          uses: aws-actions/configure-aws-credentials@v4
+#          with:
+#            aws-access-key-id: ${{ secrets.AWS_APPE_ACCESS_KEY }}
+#            aws-secret-access-key: ${{ secrets.AWS_APPE_SECRET_KEY }}
+#            aws-region: eu-west-1
+
+# if BaseX / Jetty server does not need to be running for tests then this part can be removed
+        - name: Start BaseX
+          run: |
+            ./gradlew basex_http_start
+            sleep 2
+
+        - name: Run gradlew test
+          run: |
+            ./gradlew clean test

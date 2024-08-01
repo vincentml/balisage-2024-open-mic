@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    
+    <!-- NISO JATS 1.3 Archiving and Interchange with OASIS tables and MathML 3 -->
+    <public publicId="-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables with MathML3 v1.3 20210610//EN" 
+        uri="JATS-archive-oasis-article1-3-mathml3-v1.3.dtd"/>
+    <system systemId="https://jats.nlm.nih.gov/archiving/1.3/JATS-archive-oasis-article1-3-mathml3.dtd" 
+        uri="JATS-archive-oasis-article1-3-mathml3-v1.3.dtd"/>
+    <systemSuffix systemIdSuffix="JATS-archive-oasis-article1-3-mathml3.dtd" 
+        uri="JATS-archive-oasis-article1-3-mathml3-v1.3.dtd"/>
+    
+    <!-- Resolve other JATS DTDs that are compatible with JATS 1.3 Archiving and Interchange with OASIS Tables and MathML 3 -->
+    <public publicId="-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables with MathML3 v1.2 20190208//EN" uri="JATS-archive-oasis-article1-3-mathml3-v1.3.dtd"/>
+    <public publicId="-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables with MathML3 v1.2 20190208//EN" uri="JATS-archive-oasis-article1-3-mathml3-v1.3.dtd"/>
+    <systemSuffix systemIdSuffix="JATS-archive-oasis-article1-mathml3.dtd" uri="JATS-archive-oasis-article1-3-mathml3-v1.3.dtd"/>
+    <systemSuffix systemIdSuffix="JATS-archivearticle1-mathml3.dtd" uri="JATS-archive-oasis-article1-3-mathml3-v1.3.dtd"/>
+    <systemSuffix systemIdSuffix="JATS-journalpublishing-oasis-article1-3-mathml3.dtd" uri="JATS-archive-oasis-article1-3-mathml3-v1.3.dtd"/>
+    <systemSuffix systemIdSuffix="JATS-journalpublishing-oasis-article1-mathml3.dtd" uri="JATS-archive-oasis-article1-3-mathml3-v1.3.dtd"/>
+    <systemSuffix systemIdSuffix="JATS-journalpublishing1-3-mathml3.dtd" uri="JATS-archive-oasis-article1-3-mathml3-v1.3.dtd"/>
+    <systemSuffix systemIdSuffix="JATS-journalpublishing1-mathml3.dtd" uri="JATS-archive-oasis-article1-3-mathml3-v1.3.dtd"/>
+    
+    <!-- Resolve other JATS DTDs that are compatible with JATS 1.3 Archiving and Interchange with OASIS Tables and MathML 2 -->
+    <!-- TODO: add JATS 1.3 with OASIS Tables and MathML 2 DTD. For now using same DTD with MathML 3. -->
+    <systemSuffix systemIdSuffix="JATS-archive-oasis-article1.dtd" uri="JATS-archive-oasis-article1-3-mathml3-v1.3.dtd"/>
+    <systemSuffix systemIdSuffix="JATS-archivearticle1.dtd" uri="JATS-archive-oasis-article1-3-mathml3-v1.3.dtd"/>
+    <systemSuffix systemIdSuffix="JATS-journalpublishing-oasis-article1-3.dtd" uri="JATS-archive-oasis-article1-3-mathml3-v1.3.dtd"/>
+    <systemSuffix systemIdSuffix="JATS-journalpublishing-oasis-article1.dtd" uri="JATS-archive-oasis-article1-3-mathml3-v1.3.dtd"/>
+    <systemSuffix systemIdSuffix="JATS-journalpublishing1-3.dtd" uri="JATS-archive-oasis-article1-3-mathml3-v1.3.dtd"/>
+    <systemSuffix systemIdSuffix="JATS-journalpublishing1.dtd" uri="JATS-archive-oasis-article1-3-mathml3-v1.3.dtd"/>
+    <systemSuffix systemIdSuffix="archive-oasis-article3.dtd" uri="JATS-archive-oasis-article1-3-mathml3-v1.3.dtd"/>
+    <systemSuffix systemIdSuffix="archivearticle3.dtd" uri="JATS-archive-oasis-article1-3-mathml3-v1.3.dtd"/>
+    <systemSuffix systemIdSuffix="journalpublishing3.dtd" uri="JATS-archive-oasis-article1-3-mathml3-v1.3.dtd"/>
+    <systemSuffix systemIdSuffix="journalpub-oasis3.dtd" uri="JATS-archive-oasis-article1-3-mathml3-v1.3.dtd"/>
+    
+</catalog>

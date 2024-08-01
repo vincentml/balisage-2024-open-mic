@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "DotJoshJohnson.xml",
+        "humao.rest-client",
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-gradle",
+        "ms-azuretools.vscode-docker"
+    ]
+}

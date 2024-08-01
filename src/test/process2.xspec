@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    stylesheet="../xslt/process2.xsl">
+    
+    <x:scenario label="say hello">
+        <x:context>
+            <article>
+                <body>
+                    <para>Hello</para>
+                </body>
+            </article>
+        </x:context>
+        <x:expect label="hello in HTML">
+            <html>
+                <body>
+                    <p>Hello</p>
+                </body>
+            </html>
+        </x:expect>
+    </x:scenario>
+
+</x:description>
