@@ -8,7 +8,7 @@ import org.gradle.internal.os.OperatingSystem
 
 repositories {
   mavenCentral()
-  maven { url "https://files.basex.org/maven" }
+  maven { url = "https://files.basex.org/maven" }
 }
 
 
@@ -88,8 +88,8 @@ System.setProperty("org.basex.path", "${projectDir}") // BaseX home directory se
 
 
 task basex_config {
-  description "Copy BaseX configuration file from version-controlled source to non-version-controlled active file"
-  group project.name
+  description = "Copy BaseX configuration file from version-controlled source to non-version-controlled active file"
+  group = project.name
   project.copy {
     from "src/startup/.basex"
     into "."
@@ -98,8 +98,8 @@ task basex_config {
 
 
 task basex_gui {
-  description "Run BaseX GUI"
-  group project.name
+  description = "Run BaseX GUI"
+  group = project.name
   dependsOn "basex_config", "compileJava"
   doLast {
     ant.java(
@@ -113,8 +113,8 @@ task basex_gui {
 
 
 task basex_http (type: JavaExec) {
-  description "Start BaseX HTTP and database server"
-  group project.name
+  description = "Start BaseX HTTP and database server"
+  group = project.name
   dependsOn "basex_config", "basex_modules", "basex_jobs", "compileJava"
   classpath configurations.runtimeClasspath
   standardInput = System.in
@@ -124,8 +124,8 @@ task basex_http (type: JavaExec) {
 
 
 task basex_http_start {
-  description "Start BaseX HTTP and database server in background"
-  group project.name
+  description = "Start BaseX HTTP and database server in background"
+  group = project.name
   dependsOn "basex_config", "basex_modules", "basex_jobs", "compileJava"
   doLast {
     ant.java(
@@ -139,51 +139,51 @@ task basex_http_start {
 }
 
 task basex_http_stop (type: JavaExec) {
-  description "Stop BaseX HTTP and database server"
-  group project.name
+  description = "Stop BaseX HTTP and database server"
+  group = project.name
   dependsOn "basex_config"
   classpath configurations.runtimeClasspath
   mainClass = "org.basex.BaseXHTTP"
   args "stop"
   systemProperties System.getProperties()
-  ignoreExitValue true
+  ignoreExitValue = true
 }
 
 
 task basex_modules (type: JavaExec) {
-  description "Install XQuery modules"
-  group project.name
+  description = "Install XQuery modules"
+  group = project.name
   dependsOn "basex_config"
   mustRunAfter "compileJava"
   classpath configurations.runtimeClasspath
   mainClass = "org.basex.BaseX"
   systemProperties System.getProperties()
   args "${projectDir}/src/startup/modules.xq"
-  ignoreExitValue false
+  ignoreExitValue = false
 }
 
 
 task basex_jobs (type: JavaExec) {
-  description "Configure XQuery jobs"
-  group project.name
+  description = "Configure XQuery jobs"
+  group = project.name
   dependsOn "basex_config"
   mustRunAfter "compileJava"
   classpath configurations.runtimeClasspath
   mainClass = "org.basex.BaseX"
   systemProperties System.getProperties()
   args "${projectDir}/src/startup/jobs.xq"
-  ignoreExitValue false
+  ignoreExitValue = false
 }
 
 task basex_test (type: JavaExec) {
-  description "Run XQuery Unit Tests in BaseX"
-  group "${project.name}"
+  description = "Run XQuery Unit Tests in BaseX"
+  group = "${project.name}"
   dependsOn "basex_config", "basex_modules", "compileJava"
   classpath configurations.runtimeClasspath
   mainClass = "org.basex.BaseX"
   systemProperties System.getProperties()
   args "-W", "-c", "TEST ${projectDir}/src/startup; TEST ${projectDir}/src/webapp; TEST ${projectDir}/src/xquery; TEST ${projectDir}/src/test"
-  ignoreExitValue false
+  ignoreExitValue = false
 }
 
 test.dependsOn "basex_test"
@@ -201,8 +201,8 @@ test.dependsOn "basex_test"
 
 
 task stage_copy_runtime_libs (type: Copy) {
-  description "Copy jar dependencies into 'build' folder"
-  group project.name
+  description = "Copy jar dependencies into 'build' folder"
+  group = project.name
   mustRunAfter "jar"
   into "${project.buildDir}/basex/lib"
   from (configurations.testRuntimeClasspath) {
@@ -212,8 +212,8 @@ task stage_copy_runtime_libs (type: Copy) {
 
 
 task stage_copy_src (type: Copy) {
-  description "Copy src folder for deployment"
-  group project.name
+  description = "Copy src folder for deployment"
+  group = project.name
   from ("${projectDir}/src") {
     exclude "java"
     exclude "test"
@@ -222,8 +222,8 @@ task stage_copy_src (type: Copy) {
 }
 
 task stage_copy_files (type: Copy) {
-  description "Copy files for deployment"
-  group project.name
+  description = "Copy files for deployment"
+  group = project.name
   dependsOn "basex_modules"
   from ("${projectDir}") {
     include "repo/**"
@@ -235,7 +235,7 @@ task stage_copy_files (type: Copy) {
 }
 
 task stage {
-  group project.name
+  group = project.name
   mustRunAfter "clean"
   dependsOn "basex_modules", "compileJava", "stage_copy_runtime_libs", "stage_copy_src", "stage_copy_files", "jar"
 }
@@ -354,7 +354,7 @@ fileTree(
   // second task examines the output of the first task
   Task t2 = task "${taskname}" {
     dependsOn "${taskname}_run"
-    description "Run XSpec ${base}"
+    description = "Run XSpec ${base}"
     doLast {
       Task t = tasks.findByName("${taskname}_run")
       def fail = false
@@ -384,8 +384,8 @@ fileTree(
 
 
 task process1 (type: JavaExec) {
-  description "Run process1.xq in BaseX"
-  group project.name
+  description = "Run process1.xq in BaseX"
+  group = project.name
   dependsOn "basex_modules"
   classpath configurations.runtimeClasspath.asPath
   mainClass = "org.basex.BaseX"
@@ -401,8 +401,8 @@ task process1 (type: JavaExec) {
 
 
 task process2 (type: JavaExec) {
-  description "Run XSLT using Saxon"
-  group project.name
+  description = "Run XSLT using Saxon"
+  group = project.name
   classpath configurations.runtimeClasspath
   mainClass = "net.sf.saxon.Transform"
   args "-s:src/xslt/process2.xml", "-xsl:src/xslt/process2.xsl", "-o:files/out/process2.html", "-catalog:${xmlCatalog}", "parameterName=value"
