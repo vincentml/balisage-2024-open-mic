@@ -13,11 +13,12 @@ repositories {
 
 
 // When updating BaseX to a new version check which version of Jetty is required
-def basexVersion = '11.1'
-def jettyVersion = '11.0.22'
-def saxonVersion = '12.4'
-def xspecVersion = '3.0.3'
+def basexVersion = '11.8'
+def jettyVersion = '11.0.24'
+def saxonVersion = '12.5'
+def xspecVersion = '3.2.2'
 def awssdkVersion = "2.25.46"
+def resolverVersion = "5.2.2"
 
 configurations {
   xspec
@@ -27,7 +28,7 @@ dependencies {
   implementation "org.basex:basex-api:${basexVersion}"
   implementation "net.sf.saxon:Saxon-HE:${saxonVersion}"
   // implementation "xml-resolver:xml-resolver:1.2"
-  implementation "org.xmlresolver:xmlresolver:6.0.4"
+  implementation "org.xmlresolver:xmlresolver:${resolverVersion}"
   implementation "org.eclipse.jetty:jetty-webapp:${jettyVersion}"
   implementation "org.eclipse.jetty.websocket:websocket-jetty-server:${jettyVersion}"
   implementation "software.amazon.awssdk:s3:${awssdkVersion}"
@@ -35,7 +36,7 @@ dependencies {
   runtimeOnly files("${project.buildDir}/classes/java/main") // Make compiled Java code available on the classpath
   xspec "net.sf.saxon:Saxon-HE:${saxonVersion}"
   // xspec "xml-resolver:xml-resolver:1.2"
-  xspec "org.xmlresolver:xmlresolver:6.0.4"
+  xspec "org.xmlresolver:xmlresolver:${resolverVersion}"
 }
 
 

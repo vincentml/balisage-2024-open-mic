@@ -1,7 +1,7 @@
 package example;
 
 import org.basex.query.QueryModule;
-import org.basex.server.Log.LogType;
+import org.basex.util.log.LogType;
 
 public class MyJava extends QueryModule {
 

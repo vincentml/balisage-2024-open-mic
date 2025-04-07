@@ -8,7 +8,7 @@ import java.io.OutputStream;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.basex.query.QueryModule;
-import org.basex.server.Log.LogType;
+import org.basex.util.log.LogType;
 
 import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
