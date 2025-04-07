@@ -355,6 +355,7 @@ fileTree(
   Task t2 = task "${taskname}" {
     dependsOn "${taskname}_run"
     description = "Run XSpec ${base}"
+    group = "${project.name} XSpec"
     doLast {
       Task t = tasks.findByName("${taskname}_run")
       def fail = false
@@ -376,6 +377,68 @@ fileTree(
 // ============================================================
 
 
+
+// ============================================================
+// XSLT and XQuery
+// ============================================================
+// Generate tasks for running XSLT and XQuery
+// Task names are derived from the path and filename with / and \ in the path replaced by _
+// The inputPath and outputPath parameters are commonly used in most XSLT and XQuery.
+
+fileTree(
+  dir: projectDir, 
+  include: ["**/*.xsl"], 
+  exclude: [buildDir.getName()]
+).each { file -> 
+  def base = file.toString().replace("\\", "/")
+  def pos = projectDir.toString().length()
+  if (pos > 0) {
+    base = base.substring(pos + 1)
+  }
+  def taskname = base.replaceAll('[/\\\\:<>"?*|]', "_")
+  Task t1 = task "${taskname}" (type: JavaExec) {
+    description = "Run XSLT ${base}"
+    group = "${project.name} XSLT"
+    dependsOn "createDirs"
+    classpath configurations.xspec
+    mainClass = "net.sf.saxon.Transform"
+    args "-s:${inputPath}", "-xsl:${file}", "-o:${outputPath}", "-catalog:${xmlCatalog}", "-t"
+    doFirst { println "xslt ${base}" }
+  }
+}
+
+fileTree(
+  dir: projectDir, 
+  include: ["**/*.xq"], 
+  exclude: [buildDir.getName()]
+).each { file -> 
+  def base = file.toString().replace("\\", "/")
+  def pos = projectDir.toString().length()
+  if (pos > 0) {
+    base = base.substring(pos + 1)
+  }
+  def taskname = base.replaceAll('[/\\\\:<>"?*|]', "_")
+  Task t1 = task "${taskname}" (type: JavaExec) {
+    description = "Run XQuery ${base}"
+    group = "${project.name} XQuery"
+    dependsOn "createDirs"
+    classpath configurations.runtimeClasspath
+    mainClass = "org.basex.BaseX"
+    systemProperties System.getProperties()
+    args "-w", "-binputPath=${inputPath}", "-boutputPath=${outputPath}", "${file}"
+    doFirst { println "xquery ${base}" }
+  }
+}
+
+task createDirs {
+  if (! new File(inputPath).exists()) mkdir inputPath
+  if (! new File(outputPath).exists()) mkdir outputPath
+}
+
+// ============================================================
+// End XSLT and XQuery section
+// ============================================================
+
 // ============================================================
 // Processes
 // ============================================================
@@ -392,10 +455,10 @@ task process1 (type: JavaExec) {
   systemProperties System.getProperties()
   def inPath = project.hasProperty('i') ? i : "files/in"
   def outPath = project.hasProperty('o') ? o : "files/out"
-  args "-b source=$inPath", "-b dest=$outPath", "-w", "src/xquery/process1.xq"
+  args "-b inputPath=$inPath", "-b outputPath=$outPath", "-w", "src/xquery/process1.xq"
   doFirst {
-    println "inPath=$inPath"
-    println "outPath=$outPath"
+    println "inputPath=$inPath"
+    println "outputPath=$outPath"
   }
 }
 
