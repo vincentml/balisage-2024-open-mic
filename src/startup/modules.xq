@@ -12,13 +12,13 @@ let $modules :=
 <modules>
   <module
     namespace="http://www.functx.com"
-    url="http://www.xqueryfunctions.com/xq/functx-1.0.1-doc.xq"
+    url="https://www.datypic.com/xq/functx-1.0.1-doc.xq"
     version="1.0.1"
   />
   <module 
     namespace="https://doi.org/10.5281/zenodo.1495494"
-    url="https://github.com/schxslt/schxslt/releases/download/v1.8.4/schxslt-basex-1.8.4.xar"
-    version="1.10"
+    url="https://github.com/schxslt/schxslt/releases/download/v1.10.1/schxslt-basex-1.10.1.xar"
+    version="1.10.1"
   />
 </modules>
 return $modules/module/local:install(@namespace, @version, @url)
