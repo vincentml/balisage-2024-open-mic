@@ -10,6 +10,7 @@ WORKDIR /usr/src/basex
 ## run build in /usr/src/basex then copy files for deployment into /srv/basex
 RUN ./gradlew clean stage && \
     cp -r build/basex /srv/basex && \
+    touch /srv/basex/.basexhome && \
     mkdir /srv/basex/data
 
 # Note: /srv/basex/data folder can be persisted on a volume outside the container.
